@@ -1,0 +1,42 @@
+[package]
+name = "fil-supra"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+filecoin-proofs-api = { version = "18.1", default-features = false }
+anyhow = "1.0.23"
+serde_json = "1.0.46"
+safer-ffi = { version = "0.0.7", features = ["proc_macros"] }
+serde = { version = "1.0.208", features = ["derive"] }
+data-encoding = "2.6.0"
+clap = { version = "4.*", features = ["derive"] }
+integer-encoding = "4.*"
+fil_logger = "0.1.6"
+log = "0.4.21"
+
+
+[features]
+default = ["cuda", "multicore-sdr"]
+
+
+
+cuda = [
+    "filecoin-proofs-api/cuda",
+]
+
+cuda-supraseal = [
+    "filecoin-proofs-api/cuda-supraseal",
+]
+
+opencl = [
+    "filecoin-proofs-api/opencl",
+]
+
+multicore-sdr = ["filecoin-proofs-api/multicore-sdr"]
+
+
+fixed-rows-to-discard = ["filecoin-proofs-api/fixed-rows-to-discard"]
